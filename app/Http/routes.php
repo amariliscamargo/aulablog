@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+    //return view('welcome');
+//});
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +29,7 @@ Route::get('/', function () {
 Route::group(['middleware' => ['web']], function () {
     //
 });
+foreach (File::allFiles(__DIR__.'/Rotas') as $partial)
+{
+    require $partial->getPathname();
+}
