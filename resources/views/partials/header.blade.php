@@ -3,7 +3,7 @@
     <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> <a class="brand" href="index.html"><span class="color-highlight">Amar</span>ilis</a>
       <div class="nav-collapse">
         <ul class="nav pull-right">
-          <li class="active"><a href="index.html">Home</a></li>
+          <li class="active"><a href="{{ route('index') }}">Home</a></li>
           <!--
           <li><a href="portfolio.html">Blog</a></li>
           <li><a href="contact.html">Contato</a></li>
