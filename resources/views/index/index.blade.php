@@ -17,26 +17,32 @@
    </div>
    <!--Start second row of columns-->
    <hr>
-   <div class="row">
+   <?php $conta = 0; ?>
+   @foreach($posts as $post)
+      @if($conta%2 == 0)
+        <div class="row">
+      @endif
      <div class="span6 thumb-list"> <a rel="lightbox" href="img/thumb-small01.png"><img src="img/thumb-small01.png" alt=""></a>
-       <h3><a href="#">Curabitur vel nunc venenatis metus </a></h3>
-       <p>This will be the description or something I guess. hasellus imperdiet nulla eu fermentum finibus. Nullam interdum ut lectus at dapibus.</p>
-        <a href="#" class="btn">Saiba Mais</a>
-     </div>
-     <div class="span6 thumb-list"> <a rel="lightbox" href="img/thumb-small02.png"><img src="img/thumb-small02.png" alt=""></a>
-       <h3><a href="#">Phasellus massa nunc, molestie.</a></h3>
-       <p>This will be the description or something I guess. I don't know. Your choice.</p>
-       <a href="#" class="btn">Saiba Mais</a> </div>
-   </div>
-   <div class="row">
-     <div class="span6 thumb-list"> <a rel="lightbox" href="img/thumb-small01.png"><img src="img/thumb-small01.png" alt=""></a>
-       <h3><a href="#">Integer feugiat lorem lectus, at pulvinar lacus imperdiet at.</a></h3>
-       <p>This will be the description or something I guess. I don't know. Your choice.</p>
-       <a href="#" class="btn">Saiba Mais</a> </div>
-     <div class="span6 thumb-list"> <a rel="lightbox" href="img/thumb-small02.png"><img src="img/thumb-small02.png" alt=""></a>
-       <h3><a href="#">Etiam bibendum lobortis velit sit amet laoreet.</a></h3>
-       <p>This will be the description or something I guess. I don't know. Your choice.</p>
-       <a href="#" class="btn">Saiba Mais</a> </div>
-   </div>
-   <hr>
+      <h3><a href="#">{{ $post->title }}</a></h3>
+      <h6>({{$post->created_at}})</h6>
+       <p>{{ $post->content }}</p>
+       <h3>Comentários</h3>
+       <!--Chamando os comentários por relacionamento-->
+        @foreach($post->comments as $comment)
+          <b>Nome: {{$comment->nome}}</b>
+          <p>Comentário: {{$comment->comment}}</p>
+        @endforeach
+        <h4><b>Tags:</b></h4>
+          <ul>
+          @foreach($post->tags as $tag)
+            <li>{{$tag->name}}</li>
+          @endforeach
+          </ul>
+       <!--<a href="#" class="btn">Saiba Mais</a>-->
+       </div>
+       @if($conta%2 == 1)
+        </div>
+       @endif
+     <?php $conta ++; ?>
+   @endforeach
 @endsection
